@@ -8,8 +8,6 @@ var concat = require('gulp-concat');
 var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
-//var coffee = require('gulp-coffee');
-//var livereload = require('gulp-livereload');
 
 gulp.task('webserver', function() {
   connect.server({
@@ -113,6 +111,6 @@ gulp.task('watch', function() {
 });
 
 
-gulp.task('style',['less','css']);
-gulp.task('copy',['imgcopy']);
+gulp.task('build',['less','css']);
+gulp.task('publish',['imgcopy']);
 gulp.task('default', ['html', 'less','hackie','js', 'dp','assets','img', 'webserver', 'watch']);
