@@ -1,6 +1,10 @@
 /node_modules/
 /bower_components/
 /spm_modules
+/dist
+/public/stylesheets/
+/public/javascripts/
+ma.js
 .gist
 *.sublime-project
 *.sublime-workspace
