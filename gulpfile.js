@@ -29,7 +29,7 @@ var opt = {
 
 gulp.task('html',function(){
 	gulp.src('views/*.hbs')
-    .pipe(handlebars())
+    .pipe(handlebars(null,{batch : ['./views/partials/']}))
     .pipe(rename({extname: ".html"}))
 	.pipe(gulp.dest('dist/html/'))
 });
