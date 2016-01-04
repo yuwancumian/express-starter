@@ -7,14 +7,14 @@ var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
 
-var handlebars = require('gulp-handlebars');
-var wrap = require('gulp-wrap');
-var sourcemap = require('gulp-sourcemap');
+//var handlebars = require('gulp-handlebars');
+//var sourcemap = require('gulp-sourcemap');
 
-var manifest = require('asset-builder')('./assets/manifest.json');
-var path = manifest.paths;
-var config = manifest.config || {};
-var globs = manifest.globs;
+var handlebars = require('gulp-compile-handlebars');
+/*var manifest = require('asset-builder')('./assets/manifest.json');*/
+//var path = manifest.paths;
+//var config = manifest.config || {};
+/*var globs = manifest.globs;*/
 
 var opt = {
     source: 'assets/',
@@ -30,7 +30,7 @@ var opt = {
 gulp.task('html',function(){
 	gulp.src('views/*.hbs')
     .pipe(handlebars())
-    .pipe(wrap('handlebars.template(<%= contents %>)'))
+    .pipe(rename({extname: ".html"}))
 	.pipe(gulp.dest('dist/html/'))
 });
 
