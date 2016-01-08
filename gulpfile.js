@@ -6,7 +6,7 @@ var concat = require('gulp-concat');
 var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
-
+var nodemon = require('gulp-nodemon');
 //var handlebars = require('gulp-handlebars');
 //var sourcemap = require('gulp-sourcemap');
 
@@ -107,15 +107,20 @@ gulp.task('img',function(){
 });
 
 gulp.task('watch', function() {
-  //gulp.watch('app/views/*.html', ['html']);
     gulp.watch(opt.source + 'stylesheets/**/*.*', ['css']);
     gulp.watch(opt.source + 'javascripts/**/*.*', ['js']);
     gulp.watch(opt.source + 'javascripts/plugins/*.*', ['plugins']);
     gulp.watch('public/images/', ['img']);
 });
 
+gulp.task('server',function(){
+    nodemon({
+        script: './bin/www'
+    })
+})
+
 
 gulp.task('style',['less:min']);
 gulp.task('copy',['imgcopy']);
-gulp.task('default', ['css', 'js', 'plugins', 'watch']);
+gulp.task('default', ['css', 'js', 'plugins', 'server', 'watch']);
 gulp.task('build',['css:min', 'js:min', 'img','html']);
