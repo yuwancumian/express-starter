@@ -35,7 +35,7 @@ gulp.task('html',function(){
 });
 
 gulp.task('css',function(){
-    gulp.src(['*.less','!_*.less'],{base:opt.source + 'stylesheets/'})
+    gulp.src([opt.source+'stylesheets/*.less','!' + opt.source + 'stylesheets/_*.less'],{base:opt.source + 'stylesheets/'})
     .pipe(less())
     .pipe(gulp.dest('public/stylesheets/'));
 });
