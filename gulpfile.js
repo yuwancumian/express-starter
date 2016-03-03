@@ -3,7 +3,7 @@ var gulp = require('gulp');
 var watch = require('gulp-watch');
 var less = require('gulp-less');
 var concat = require('gulp-concat');
-var minifyCss = require('gulp-minify-css');
+var cleanCss = require('gulp-clean-css');
 var rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
 var nodemon = require('gulp-nodemon');
@@ -48,7 +48,7 @@ gulp.task('css',function(){
 gulp.task('css:min',function(){
     gulp.src(opt.source + 'stylesheets/*.less')
     .pipe(less())
-    .pipe(minifyCss())
+    .pipe(cleanCss())
     .pipe(gulp.dest(opt.dist + 'content/css/'));
 })
 
