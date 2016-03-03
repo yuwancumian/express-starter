@@ -8,7 +8,7 @@ var rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
 var nodemon = require('gulp-nodemon');
 //var handlebars = require('gulp-handlebars');
-//var sourcemap = require('gulp-sourcemap');
+var sourcemaps = require('gulp-sourcemaps');
 
 var handlebars = require('gulp-compile-handlebars');
 /*var manifest = require('asset-builder')('./assets/manifest.json');*/
@@ -35,8 +35,13 @@ gulp.task('html',function(){
 });
 
 gulp.task('css',function(){
-    gulp.src([opt.source+'stylesheets/*.less','!' + opt.source + 'stylesheets/_*.less'],{base:opt.source + 'stylesheets/'})
-    .pipe(less())
+    gulp.src([opt.source+'stylesheets/*.less','!' + opt.source + 'stylesheets/_*.less'])
+    .pipe(sourcemaps.init())
+    .pipe(less().on('error', function (e) {
+            console.error(e.message);
+            this.emit('end');
+    }))
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest('public/stylesheets/'));
 });
 
