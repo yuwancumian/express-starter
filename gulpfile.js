@@ -46,7 +46,7 @@ gulp.task('css',function(){
 });
 
 gulp.task('css:min',function(){
-    gulp.src(opt.source + 'stylesheets/*.less')
+    gulp.src([opt.source+'stylesheets/*.less','!' + opt.source + 'stylesheets/_*.less'])
     .pipe(less())
     .pipe(cleanCss())
     .pipe(gulp.dest(opt.dist + 'content/css/'));
