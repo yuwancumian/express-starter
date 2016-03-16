@@ -7,9 +7,7 @@ var bodyParser = require('body-parser');
 var hbs = require('hbs');
 var hbsutils = require('hbs-utils')(hbs);
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
-var alist = require('./routes/alist');
+mount_routes(app,  __dirname + '/routes', true);
 
 var app = express();
 
